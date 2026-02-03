@@ -1,0 +1,92 @@
+/* CommentForm.css */
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+}
+
+.comment-form__textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+}
+
+.comment-form__textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.comment-form__textarea::placeholder {
+  color: #999999;
+}
+
+.comment-form__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.comment-form__btn {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.comment-form__btn:hover:not(:disabled) {
+  background-color: #357abd;
+}
+
+.comment-form__btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.comment-form__btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.comment-form__btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+}
+
+/* Dark Mode Support */
+body.dark-mode .comment-form__textarea {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+body.dark-mode .comment-form__textarea::placeholder {
+  color: #94a3b8;
+}
+
+body.dark-mode .comment-form__textarea:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+body.dark-mode .comment-form__btn {
+  background-color: #667eea;
+}
+
+body.dark-mode .comment-form__btn:hover:not(:disabled) {
+  background-color: #5a67d8;
+}

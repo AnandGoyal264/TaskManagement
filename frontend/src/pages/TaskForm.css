@@ -1,0 +1,445 @@
+/* TaskForm Component Styles */
+
+.task-form-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task-form-container h2 {
+  margin: 0 0 2rem 0;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 0.6s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Container */
+.task-form-container .form {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  max-width: 600px;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Labels */
+.task-form-container .form label {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Form Inputs */
+.task-form-container .form input,
+.task-form-container .form select,
+.task-form-container .form textarea {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1.125rem;
+  margin-top: 0.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #1f2937;
+  background: #f9fafb;
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.task-form-container .form input:focus,
+.task-form-container .form select:focus,
+.task-form-container .form textarea:focus {
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.task-form-container .form input:hover,
+.task-form-container .form select:hover,
+.task-form-container .form textarea:hover {
+  border-color: #d1d5db;
+}
+
+/* Textarea Specific */
+.task-form-container .form textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* Select Dropdown Specific Styles */
+.task-form-container .form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  padding-right: 3rem;
+}
+
+.task-form-container .form select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23764ba2' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+.task-form-container .form select option {
+  padding: 0.75rem;
+  background: white;
+  color: #1f2937;
+}
+
+/* Date Input Specific */
+.task-form-container .form input[type="date"] {
+  cursor: pointer;
+}
+
+.task-form-container .form input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(45%) sepia(62%) saturate(2089%) hue-rotate(220deg) brightness(95%) contrast(91%);
+}
+
+/* Submit Button */
+.task-form-container .form .btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.task-form-container .form .btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+}
+
+.task-form-container .form .btn:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.task-form-container .form .btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+}
+
+/* Loading State Animation */
+.task-form-container .form .btn:disabled::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.task-form-container .error {
+  padding: 1rem;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-left: 4px solid #ef4444;
+  border-radius: 8px;
+  color: #991b1b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: shake 0.5s ease;
+  margin-bottom: 1rem;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* Input Placeholders */
+.task-form-container .form input::placeholder,
+.task-form-container .form textarea::placeholder {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+/* Focus Visible for Accessibility */
+.task-form-container .form input:focus-visible,
+.task-form-container .form select:focus-visible,
+.task-form-container .form textarea:focus-visible,
+.task-form-container .form .btn:focus-visible {
+  outline: 3px solid rgba(102, 126, 234, 0.5);
+  outline-offset: 2px;
+}
+
+/* Field Groups with Icons (Optional Enhancement) */
+.task-form-container .form label {
+  position: relative;
+}
+
+/* Required Field Indicator */
+.task-form-container .form label:has(input[required])::after,
+.task-form-container .form label:has(textarea[required])::after {
+  content: '*';
+  color: #ef4444;
+  margin-left: 4px;
+  font-weight: 700;
+}
+
+/* Form Section Divider (if needed) */
+.task-form-container .form-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+  margin: 2rem 0;
+}
+
+/* Success State (optional) */
+.task-form-container .success {
+  padding: 1rem;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-left: 4px solid #10b981;
+  border-radius: 8px;
+  color: #065f46;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideIn 0.5s ease;
+  margin-bottom: 1rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .task-form-container {
+    padding: 1rem;
+  }
+
+  .task-form-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .task-form-container .form {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .task-form-container .form input,
+  .task-form-container .form select,
+  .task-form-container .form textarea {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .task-form-container .form .btn {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-form-container h2 {
+    font-size: 1.75rem;
+  }
+
+  .task-form-container .form {
+    padding: 1.5rem 1rem;
+  }
+
+  .task-form-container .form label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Loading Overlay (optional) */
+.task-form-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-weight: 600;
+}
+
+.task-form-loading::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-left: 12px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Custom Scrollbar */
+.task-form-container ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.task-form-container ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.task-form-container ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.task-form-container ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Animated Background Elements */
+.task-form-container::before,
+.task-form-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 20s infinite ease-in-out;
+  pointer-events: none;
+}
+
+.task-form-container::before {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.task-form-container::after {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.task-form-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark Mode Support */
+body.dark-mode .task-form-container {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+body.dark-mode .task-form-container h2 {
+  color: #f1f5f9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .task-form-container .form {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(71, 85, 105, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .task-form-container .form label {
+  color: #cbd5e1;
+}
+
+body.dark-mode .task-form-container .form input,
+body.dark-mode .task-form-container .form select,
+body.dark-mode .task-form-container .form textarea {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+body.dark-mode .task-form-container .form input::placeholder,
+body.dark-mode .task-form-container .form textarea::placeholder {
+  color: #94a3b8;
+}
+
+body.dark-mode .task-form-container .form input:focus,
+body.dark-mode .task-form-container .form select:focus,
+body.dark-mode .task-form-container .form textarea:focus {
+  border-color: #667eea;
+  background: #1e293b;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+body.dark-mode .task-form-container .btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.dark-mode .error {
+  color: #fca5a5;
+}

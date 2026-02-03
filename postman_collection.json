@@ -1,0 +1,125 @@
+{
+  "info": {
+    "name": "Task Platform API",
+    "_postman_id": "task-platform-collection",
+    "description": "Basic Postman collection for Task Platform (Auth, Tasks, Comments, Files, Users)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Test\",\n  \"email\": \"test@example.com\",\n  \"password\": \"secret\",\n  \"role\": \"employee\"\n}" },
+        "url": { "raw": "{{baseUrl}}/auth/register", "host": [ "{{baseUrl}}" ], "path": [ "auth", "register" ] }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"secret\"\n}" },
+        "url": { "raw": "{{baseUrl}}/auth/login", "host": [ "{{baseUrl}}" ], "path": [ "auth", "login" ] }
+      }
+    },
+    {
+      "name": "Register Manager",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Manager\",\n  \"email\": \"manager@example.com\",\n  \"password\": \"secret\",\n  \"role\": \"manager\"\n}" },
+        "url": { "raw": "{{baseUrl}}/auth/register", "host": [ "{{baseUrl}}" ], "path": [ "auth", "register" ] }
+      }
+    },
+    {
+      "name": "Me",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ],
+        "url": { "raw": "{{baseUrl}}/auth/me", "host": [ "{{baseUrl}}" ], "path": [ "auth", "me" ] }
+      }
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{ \"title\": \"API Task\", \"description\": \"From Postman\" }" },
+        "url": { "raw": "{{baseUrl}}/tasks", "host": [ "{{baseUrl}}" ], "path": [ "tasks" ] }
+      }
+    },
+    {
+      "name": "List Tasks",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ],
+        "url": { "raw": "{{baseUrl}}/tasks", "host": [ "{{baseUrl}}" ], "path": [ "tasks" ], "query": [ { "key": "page", "value": "1" } ] }
+      }
+    },
+    {
+      "name": "Users",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ],
+        "url": { "raw": "{{baseUrl}}/users", "host": [ "{{baseUrl}}" ], "path": [ "users" ] }
+      }
+    },
+    {
+      "name": "Update User Role",
+      "request": {
+        "method": "PATCH",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{ \"role\": \"manager\" }" },
+        "url": { "raw": "{{baseUrl}}/users/:id/role", "host": [ "{{baseUrl}}" ], "path": [ "users", ":id", "role" ] }
+      }
+    },
+    {
+      "name": "Add Comment",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" } ],
+        "body": { "mode": "raw", "raw": "{ \"text\": \"Nice work\", \"taskId\": \"<taskId>\" }" },
+        "url": { "raw": "{{baseUrl}}/comments", "host": [ "{{baseUrl}}" ], "path": [ "comments" ] }
+      }
+    },
+    {
+      "name": "Upload Files",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ],
+        "body": { "mode": "formdata", "formdata": [ { "key": "files", "type": "file" }, { "key": "taskId", "value": "<taskId>", "type": "text" } ] },
+        "url": { "raw": "{{baseUrl}}/files/upload", "host": [ "{{baseUrl}}" ], "path": [ "files", "upload" ] }
+      }
+    },
+    {
+      "name": "Analytics Summary",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ],
+        "url": { "raw": "{{baseUrl}}/analytics/summary", "host": [ "{{baseUrl}}" ], "path": [ "analytics", "summary" ] }
+      }
+    },
+    {
+      "name": "Analytics Trends",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ],
+        "url": { "raw": "{{baseUrl}}/analytics/trends?days=30", "host": [ "{{baseUrl}}" ], "path": [ "analytics", "trends" ], "query": [ { "key": "days", "value": "30" } ] }
+      }
+    },
+    {
+      "name": "Export CSV",
+      "request": {
+        "method": "GET",
+        "header": [ { "key": "Authorization", "value": "Bearer {{token}}" } ],
+        "url": { "raw": "{{baseUrl}}/analytics/export", "host": [ "{{baseUrl}}" ], "path": [ "analytics", "export" ] }
+      }
+    }
+  ]
+}
