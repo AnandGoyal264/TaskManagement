@@ -90,7 +90,7 @@ autonomise/
 ### 1️⃣ Clone Repository
 ```bash
 git clone https://github.com/AnandGoyal264/TaskManagement
-cd autonomise
+
 ```
 
 ---
@@ -240,3 +240,4 @@ React • Node.js • Express • MongoDB • Cloudinary
 ---
 
 ### ⭐ If you like this project, consider giving it a star!
+
